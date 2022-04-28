@@ -5,6 +5,7 @@ const fs = require('fs');
 notes.get('/', (req, res) => {
     fs.readFile('./db/db.json', 'utf-8', (error, data) => {
         res.json(JSON.parse(data));
+        console.log("READING FILE!!");
     });
 });
 
@@ -15,7 +16,7 @@ notes.post('/', (req, res) => {
         const newNote = {
             title,
             text,
-            noteId: uuidv4(),
+            id: uuidv4(),
         };
 
         fs.readFile('./db/db.json', 'utf-8', (err, data) => {
